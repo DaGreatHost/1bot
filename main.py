@@ -1,4 +1,3 @@
-
 import telebot
 from telebot import types
 import config
@@ -13,14 +12,14 @@ def start_message(message):
     user = message.from_user
     username = '@' + user.username if user.username else user.first_name
 
-    caption = f"{username} forward (0/5)\n\nWag kalimutang mag ambag\n\n👉 [PAANO MAG FORWARD](https://t.me/forwardtutorial1)"
+    caption = f"{username} forward (0/5)\n\nWag kalimutang mag ambag\n\n👉 <a href='https://t.me/forwardtutorial1'>PAANO MAG FORWARD</a>"
     photo = open('media/123.jpg', 'rb')
 
     markup = types.InlineKeyboardMarkup()
     markup.add(types.InlineKeyboardButton("Boso GC", callback_data="boso_gc"))
     markup.add(types.InlineKeyboardButton("Join", url="https://t.me/+0enGe_F5qDg1ODg1"))
 
-    bot.send_photo(message.chat.id, photo=photo, caption=caption, parse_mode="Markdown", reply_markup=markup)
+    bot.send_photo(message.chat.id, photo=photo, caption=caption, parse_mode="HTML", reply_markup=markup)
     photo.close()
 
 @bot.callback_query_handler(func=lambda call: call.data == "boso_gc")
