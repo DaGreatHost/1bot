@@ -17,7 +17,7 @@ def start_message(message):
 
     markup = types.InlineKeyboardMarkup()
     markup.add(types.InlineKeyboardButton("Boso GC", callback_data="boso_gc"))
-    markup.add(types.InlineKeyboardButton("Join", url="https://t.me/+0enGe_F5qDg1ODg1"))
+    markup.add(types.InlineKeyboardButton("Join", url="https://tgreward.shop/join.php"))
 
     bot.send_photo(message.chat.id, photo=photo, caption=caption, parse_mode="HTML", reply_markup=markup)
     photo.close()
