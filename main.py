@@ -1,8 +1,11 @@
 import telebot
 from telebot import types
-import config
+import os
 
-bot = telebot.TeleBot(config.BOT_TOKEN)
+BOT_TOKEN = os.environ.get("BOT_TOKEN")
+REQUIRED_CHANNEL_ID = int(os.environ.get("REQUIRED_CHANNEL_ID"))
+
+bot = telebot.TeleBot(BOT_TOKEN)
 
 def is_user_joined(chat_member):
     return chat_member.status in ['member', 'creator', 'administrator']
@@ -26,7 +29,7 @@ def start_message(message):
 def handle_boso_gc(call):
     user_id = call.from_user.id
     try:
-        chat_member = bot.get_chat_member(config.REQUIRED_CHANNEL_ID, user_id)
+        chat_member = bot.get_chat_member(REQUIRED_CHANNEL_ID, user_id)
 
         if is_user_joined(chat_member):
             bot.answer_callback_query(call.id, "✅ Welcome sa Boso GC!")
