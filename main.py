@@ -19,8 +19,11 @@ def start_message(message):
     photo = open('media/123.jpg', 'rb')
 
     markup = types.InlineKeyboardMarkup()
-    markup.add(types.InlineKeyboardButton("Boso GC", callback_data="boso_gc"))
-    markup.add(types.InlineKeyboardButton("Join", url="https://tgreward.shop/join.php"))
+    markup.row(types.InlineKeyboardButton("Boso GC", callback_data="boso_gc"))
+    markup.row(
+        types.InlineKeyboardButton("Join", url="https://tgreward.shop/join.php"),
+        types.InlineKeyboardButton("Avail VIP", url="https://t.me/trendsmodbot")
+    )
 
     bot.send_photo(message.chat.id, photo=photo, caption=caption, parse_mode="HTML", reply_markup=markup)
     photo.close()
